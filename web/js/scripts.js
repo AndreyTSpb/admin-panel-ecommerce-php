@@ -58,7 +58,8 @@ $(document).ready( function () {
     let kol = 1;
     /**
      * Данные для создания таблицы ввде объекта
-     * */
+     */
+
     let data = [
                 {
                     "Order":       kol++,
@@ -178,6 +179,7 @@ $(document).ready( function () {
                     "Amount":       "$3,120"
                 }
     ];
+
     
     /**
      * Активация таблицы заказами 
@@ -220,7 +222,7 @@ $(document).ready( function () {
      */
     let kol_prod = 1;
 
-    let products = [
+    let products1 = [
         {
             'No': kol_prod++,
             'Product_Name': "cap",
@@ -310,20 +312,38 @@ $(document).ready( function () {
             'Price': 500
         }
     ];
+
+
     /**
-     * Активация таблицы с товарами
+     * Получение списка товара асинхронным запросым
      */
-    $('#productTable').DataTable({
-        data: products, //сюда передаем данные для таблицы
-        columns: [
-            { data: 'No' },
-            { data: 'Product_Name' },
-            { data: 'Photo' },
-            { data: 'Link' },
-            { data: 'Qnt' },
-            { data: 'Price' }
-        ]
-    });
+    function get_products(){
+        let curentUrl = window.location;
+        $.ajax({
+            type: "POST",
+            url: curentUrl.protocol + '//' + curentUrl.hostname + '/ajax/ajax_get_data_products.php',
+            data: "token = 123456",
+            success: function(msg){
+                let products = JSON.parse(msg);
+                /**
+                 * Активация таблицы с товарами
+                 */
+                $('#productTable').DataTable({
+                    data: products, //сюда передаем данные для таблицы
+                    columns: [
+                        { data: 'No' },
+                        { data: 'Product_Name' },
+                        { data: 'Photo' },
+                        { data: 'Link' },
+                        { data: 'Qnt' },
+                        { data: 'Price' }
+                    ]
+                });
+            }
+        });
+    }
+
+    get_products();
 
 
     /**
