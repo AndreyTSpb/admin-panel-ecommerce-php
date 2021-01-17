@@ -217,102 +217,6 @@ $(document).ready( function () {
         return str;
     }
 
-    /**
-     * Список товара
-     */
-    let kol_prod = 1;
-
-    let products1 = [
-        {
-            'No': kol_prod++,
-            'Product_Name': "cap",
-            'Photo': '<img src="img/cap.png" alt="" srcset="">',
-            'Link': '<a href="#">link</a>', 
-            'Qnt': 12,
-            'Price': 100
-        },
-        {
-            'No': kol_prod++,
-            'Product_Name': "adidas",
-            'Photo': '<img src="img/adidas.png" alt="" srcset="">',
-            'Link': '<a href="#">link</a>', 
-            'Qnt': 2,
-            'Price': 300
-        },
-        {
-            'No': kol_prod++,
-            'Product_Name': "jacket",
-            'Photo': '<img src="img/jacket.png" alt="" srcset="">',
-            'Link': '<a href="#">link</a>', 
-            'Qnt': 1,
-            'Price': 500
-        },
-        {
-            'No': kol_prod++,
-            'Product_Name': "tshirt",
-            'Photo': '<img src="img/tshirt.png" alt="" srcset="">',
-            'Link': '<a href="#">link</a>', 
-            'Qnt': 12,
-            'Price': 100
-        },
-        {
-            'No': kol_prod++,
-            'Product_Name': "cap",
-            'Photo': '<img src="img/cap.png" alt="" srcset="">',
-            'Link': '<a href="#">link</a>', 
-            'Qnt': 12,
-            'Price': 100
-        },
-        {
-            'No': kol_prod++,
-            'Product_Name': "cap",
-            'Photo': '<img src="img/cap.png" alt="" srcset="">',
-            'Link': '<a href="#">link</a>', 
-            'Qnt': 12,
-            'Price': 100
-        },
-        {
-            'No': kol_prod++,
-            'Product_Name': "tshirt",
-            'Photo': '<img src="img/tshirt.png" alt="" srcset="">',
-            'Link': '<a href="#">link</a>', 
-            'Qnt': 12,
-            'Price': 100
-        },
-        {
-            'No': kol_prod++,
-            'Product_Name': "jacket",
-            'Photo': '<img src="img/jacket.png" alt="" srcset="">',
-            'Link': '<a href="#">link</a>', 
-            'Qnt': 1,
-            'Price': 500
-        },
-        {
-            'No': kol_prod++,
-            'Product_Name': "jacket",
-            'Photo': '<img src="img/jacket.png" alt="" srcset="">',
-            'Link': '<a href="#">link</a>', 
-            'Qnt': 1,
-            'Price': 500
-        },
-        {
-            'No': kol_prod++,
-            'Product_Name': "jacket",
-            'Photo': '<img src="img/jacket.png" alt="" srcset="">',
-            'Link': '<a href="#">link</a>', 
-            'Qnt': 1,
-            'Price': 500
-        },
-        {
-            'No': kol_prod++,
-            'Product_Name': "jacket",
-            'Photo': '<img src="img/jacket.png" alt="" srcset="">',
-            'Link': '<a href="#">link</a>', 
-            'Qnt': 1,
-            'Price': 500
-        }
-    ];
-
 
     /**
      * Получение списка товара асинхронным запросым
@@ -324,6 +228,9 @@ $(document).ready( function () {
             url: curentUrl.protocol + '//' + curentUrl.hostname + '/ajax/ajax_get_data_products.php',
             data: "token = 123456",
             success: function(msg){
+                if(!msg){
+                    return true;
+                }
                 let products = JSON.parse(msg);
                 /**
                  * Активация таблицы с товарами

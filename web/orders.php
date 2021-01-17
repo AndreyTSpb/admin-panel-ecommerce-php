@@ -39,67 +39,11 @@
             </thead>
             <tbody>
             <tr>
-                <td>1</td>
-                <td>22.09.2020</td>
-                <td>Sophia</td>
-                <td>sophia@gmail.com</td>
-                <td>14-08-2018</td>
-                <td>$12,1258</td>
-                <td>$11,254</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>20.09.2020</td>
-                <td>Jayden</td>
-                <td>Jayden@gmail.com</td>
-                <td>12-08-2018</td>
-                <td>$12,1258</td>
-                <td>$10,254</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>29.09.2020</td>
-                <td>William</td>
-                <td>sophia@gmail.com</td>
-                <td>24-08-2018</td>
-                <td>$12,1258</td>
-                <td>$10,254</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>22.09.2020</td>
-                <td>Sophia</td>
-                <td>sophia@gmail.com</td>
-                <td>14-08-2018</td>
-                <td>$12,1258</td>
-                <td>$10,254</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>22.09.2020</td>
-                <td>Sophia</td>
-                <td>sophia@gmail.com</td>
-                <td>14-08-2018</td>
-                <td>$12,1258</td>
-                <td>$11,254</td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>22.09.2020</td>
-                <td>Sophia</td>
-                <td>sophia@gmail.com</td>
-                <td>14-08-2018</td>
-                <td>$12,1258</td>
-                <td>$12,254</td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td>22.09.2020</td>
-                <td>Sophia</td>
-                <td>sophia@gmail.com</td>
-                <td>14-08-2018</td>
-                <td>$22,1258</td>
-                <td>$13,254</td>
+                <div class="d-flex justify-content-center">
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
             </tr>
             </tbody>
         </table>

@@ -12,7 +12,9 @@ $db = new SQLite3($_SERVER['DOCUMENT_ROOT']."/bd.db");
 
 $select = "SELECT * FROM products";
 $r = $db->query($select);
-
+if(!$r){
+    return false;
+}
 $arr = [];
 while ($row = $r->fetchArray(1)){
 
