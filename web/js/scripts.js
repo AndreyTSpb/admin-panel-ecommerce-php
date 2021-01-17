@@ -55,147 +55,42 @@ $(document).ready( function () {
         });
     }
 
-    let kol = 1;
     /**
-     * Данные для создания таблицы ввде объекта
+     * Получения списка заказов, через ajax
      */
-
-    let data = [
-                {
-                    "Order":       kol++,
-                    "date":   "2011/04/25",
-                    "Custommer_name":     "Tiger Nixon",
-                    "Custommer_Email": "sophia@gmail.com",
-                    "Due_date":     "2011/04/25",
-                    "Balance":       "5421",
-                    "Amount":       "$3,120"
-                },
-                {
-                    "Order":       kol++,
-                    "date":   "2011/04/25",
-                    "Custommer_name":     "Tiger Nixon",
-                    "Custommer_Email": "sophia@gmail.com",
-                    "Due_date":     "2011/04/25",
-                    "Balance":       "5421",
-                    "Amount":       "$3,120"
-                },
-                {
-                    "Order":       kol++,
-                    "date":   "2011/04/25",
-                    "Custommer_name":     "Tiger Nixon",
-                    "Custommer_Email": "sophia@gmail.com",
-                    "Due_date":     "2011/04/25",
-                    "Balance":       "5421",
-                    "Amount":       "$3,120"
-                },
-                {
-                    "Order":       kol++,
-                    "date":   "2011/04/25",
-                    "Custommer_name":     "Tiger Nixon",
-                    "Custommer_Email": "sophia@gmail.com",
-                    "Due_date":     "2011/04/25",
-                    "Balance":       "5421",
-                    "Amount":       "$3,120"
-                },
-                {
-                    "Order":       kol++,
-                    "date":   "2011/04/25",
-                    "Custommer_name":     "Tiger Nixon",
-                    "Custommer_Email": "sophia@gmail.com",
-                    "Due_date":     "2011/04/25",
-                    "Balance":       "5421",
-                    "Amount":       "$3,120"
-                },
-                {
-                    "Order":       kol++,
-                    "date":   "2011/04/25",
-                    "Custommer_name":     "Tiger Nixon",
-                    "Custommer_Email": "sophia@gmail.com",
-                    "Due_date":     "2011/04/25",
-                    "Balance":       "5421",
-                    "Amount":       "$3,120"
-                },
-                {
-                    "Order":       kol++,
-                    "date":   "2011/04/25",
-                    "Custommer_name":     "Tiger Nixon",
-                    "Custommer_Email": "sophia@gmail.com",
-                    "Due_date":     "2011/04/25",
-                    "Balance":       "5421",
-                    "Amount":       "$3,120"
-                },
-                {
-                    "Order":       kol++,
-                    "date":   "2011/04/25",
-                    "Custommer_name":     "Tiger Nixon",
-                    "Custommer_Email": "sophia@gmail.com",
-                    "Due_date":     "2011/04/25",
-                    "Balance":       "5421",
-                    "Amount":       "$3,120"
-                },
-                {
-                    "Order":       kol++,
-                    "date":   "2011/04/25",
-                    "Custommer_name":     "Tiger Nixon",
-                    "Custommer_Email": "sophia@gmail.com",
-                    "Due_date":     "2011/04/25",
-                    "Balance":       "5421",
-                    "Amount":       "$3,120"
-                },
-                {
-                    "Order":       kol++,
-                    "date":   "2011/04/25",
-                    "Custommer_name":     "Tiger Nixon",
-                    "Custommer_Email": "sophia@gmail.com",
-                    "Due_date":     "2011/04/25",
-                    "Balance":       "5421",
-                    "Amount":       "$3,120"
-                },
-                {
-                    "Order":       kol++,
-                    "date":   "2011/04/25",
-                    "Custommer_name":     "Tiger Nixon",
-                    "Custommer_Email": "sophia@gmail.com",
-                    "Due_date":     "2011/04/25",
-                    "Balance":       "5421",
-                    "Amount":       "$3,120"
-                },
-                {
-                    "Order":       kol++,
-                    "date":   "2011/04/25",
-                    "Custommer_name":     "Tiger Nixon",
-                    "Custommer_Email": "sophia@gmail.com",
-                    "Due_date":     "2011/04/25",
-                    "Balance":       "5421",
-                    "Amount":       "$3,120"
-                },
-                {
-                    "Order":       kol++,
-                    "date":   "2011/04/25",
-                    "Custommer_name":     "Tiger Nixon",
-                    "Custommer_Email": "sophia@gmail.com",
-                    "Due_date":     "2011/04/25",
-                    "Balance":       "5421",
-                    "Amount":       "$3,120"
+    function get_orders(){
+        let curentUrl = window.location;
+        $.ajax({
+            type: "POST",
+            url: curentUrl.protocol + '//' + curentUrl.hostname + '/ajax/ajax_get_orders.php',
+            data: "token = 123456",
+            success: function(msg){
+                if(!msg){
+                    return true;
                 }
-    ];
+                let data = JSON.parse(msg);
+                /**
+                 * Активация таблицы заказами
+                 */
+                $('#myTable').DataTable({
+                    data: data, //сюда передаем данные для таблицы
+                    columns: [
+                        { data: 'Order' },
+                        { data: 'date' },
+                        { data: 'Custommer_name' },
+                        { data: 'Custommer_Email' },
+                        { data: 'Due_date' },
+                        { data: 'Balance' },
+                        { data: 'Amount' }
+                    ]
+                });
+            }
+        });
+    }
+    if(document.getElementById('myTable') !== null){
+        get_orders();
+    }
 
-    
-    /**
-     * Активация таблицы заказами 
-     */
-    $('#myTable').DataTable({
-        data: data, //сюда передаем данные для таблицы
-        columns: [
-            { data: 'Order' },
-            { data: 'date' },
-            { data: 'Custommer_name' },
-            { data: 'Custommer_Email' },
-            { data: 'Due_date' },
-            { data: 'Balance' },
-            { data: 'Amount' }
-        ]
-    });
 
 
     /**
@@ -228,7 +123,7 @@ $(document).ready( function () {
             url: curentUrl.protocol + '//' + curentUrl.hostname + '/ajax/ajax_get_data_products.php',
             data: "token = 123456",
             success: function(msg){
-                if(!msg){
+                if(msg){
                     return true;
                 }
                 let products = JSON.parse(msg);
@@ -250,7 +145,9 @@ $(document).ready( function () {
         });
     }
 
-    get_products();
+    if(document.getElementById('productTable') !== null){
+        get_products();
+    }
 
 
     /**

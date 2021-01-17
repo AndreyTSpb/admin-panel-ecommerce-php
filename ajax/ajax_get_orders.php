@@ -29,13 +29,13 @@ if(!$r){
 $arr = [];
 while ($row = $r->fetchArray(1)) {
     $arr[] = [
-        'Order' => $row['order_id'],
-        'date'  => date('dd/mm/yyyy', $row['order_date']),
+        'Order'           => $row['order_id'],
+        'date'            => date('d/m/Y', strtotime($row['order_date'])),
         'Custommer_name'  => $row['custommer_name'],
         'Custommer_Email' => $row['custommer_email'],
-        'Due_date'        => $row['due_date'],
-        'Balance'         => $row['balance'],
-        'Amount'          => $row['amount']
+        'Due_date'        => date('d/m/Y', strtotime($row['due_date'])),
+        'Balance'         => '$'.$row['balance'],
+        'Amount'          => '$'.$row['amount']
     ];
 }
 

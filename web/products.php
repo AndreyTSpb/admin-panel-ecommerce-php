@@ -20,6 +20,15 @@
             </tr>
             </thead>
             <tbody>
+                <tr>
+                    <td colspan="6">
+                        <div class="d-flex justify-content-center">
+                            <div class="spinner-border" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>
