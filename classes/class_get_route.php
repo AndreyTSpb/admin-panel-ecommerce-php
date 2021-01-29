@@ -33,10 +33,10 @@ class Class_Get_Route
         /*Делим строку пути на состовлющие: значение в по первому ключу адрес страницы*/
         $routes = explode('/', $route_str);
         $content = trim($routes[0],'.html');
+
         if(empty($content) OR !Class_File_Exists::test($content)){
             $content = 'dashboard';
         }
-
         /**
          * Получаем переменные если переданы
          */
@@ -49,6 +49,7 @@ class Class_Get_Route
                 $params[$key] = $item;
             }
         }
+
         return compact('content', 'params');
     }
 }

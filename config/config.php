@@ -12,9 +12,6 @@ if (!$db) exit("Не удалось создать базу данных!");
 //соль
 define('SALT','erdliu762hbgfgdamnhf');
 
-//папка для шаблонов
-define('TP_FOLDER', 'web');
-
 /*Урл сайта полный для header-location*/
 $protocol = (!empty($_SERVER['HTTPS']) && 'off' !== strtolower($_SERVER['HTTPS'])?"https://":"http://");
 $host  = $_SERVER['HTTP_HOST'];

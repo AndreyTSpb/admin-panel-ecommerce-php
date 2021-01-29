@@ -19,7 +19,17 @@
     "Amount":       "$3,120"
  */
 
-$db = new SQLite3($_SERVER['DOCUMENT_ROOT']."/bd.db");
+/**
+ * На хостинге документ_рут возврашает корневой домен, вместо папки поддомена
+ * поэтому костыль
+ */
+$real_path_arr = explode('/', dirname(__FILE__));
+array_pop($real_path_arr);
+//var_dump($real_path_arr);
+$real_path = implode('/', $real_path_arr);
+
+$db = new SQLite3($real_path."/bd.db");
+
 
 $select = "SELECT * FROM orders ORDER BY order_date DESC";
 $r = $db->query($select);

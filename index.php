@@ -5,14 +5,16 @@
  * Date: 13/01/2021
  * Time: 20:41
  */
+
 /**
  * Connect bd
  */
-require_once 'config/config.php';
+require_once __DIR__ . '/config/config.php';
 
 spl_autoload_register(function ($class_name) {
-    include 'classes/'.$class_name . '.php';
+    include __DIR__ . '/classes/'. mb_strtolower($class_name) . '.php';
 });
+
 /**
  * Авторизация
  */

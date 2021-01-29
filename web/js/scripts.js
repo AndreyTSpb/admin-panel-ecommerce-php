@@ -84,6 +84,24 @@ $(document).ready( function () {
                         { data: 'Amount' }
                     ]
                 });
+            },error: function (jqXHR, exception) {
+                let msg = '';
+                if (jqXHR.status === 0) {
+                    msg = 'Not connect.\n Verify Network.';
+                } else if (jqXHR.status == 404) {
+                    msg = 'Requested page not found. [404]';
+                } else if (jqXHR.status == 500) {
+                    msg = 'Internal Server Error [500].';
+                } else if (exception === 'parsererror') {
+                    msg = 'Requested JSON parse failed.';
+                } else if (exception === 'timeout') {
+                    msg = 'Time out error.';
+                } else if (exception === 'abort') {
+                    msg = 'Ajax request aborted.';
+                } else {
+                    msg = 'Uncaught Error.\n' + jqXHR.responseText;
+                }
+                console.log(msg);
             }
         });
     }
@@ -123,9 +141,12 @@ $(document).ready( function () {
             url: curentUrl.protocol + '//' + curentUrl.hostname + '/ajax/ajax_get_data_products.php',
             data: "token = 123456",
             success: function(msg){
-                if(msg){
+                console.log(msg);
+
+                if(!msg){
                     return true;
                 }
+
                 let products = JSON.parse(msg);
                 /**
                  * Активация таблицы с товарами
@@ -141,6 +162,24 @@ $(document).ready( function () {
                         { data: 'Price' }
                     ]
                 });
+            },error: function (jqXHR, exception) {
+                let msg = '';
+                if (jqXHR.status === 0) {
+                    msg = 'Not connect.\n Verify Network.';
+                } else if (jqXHR.status == 404) {
+                    msg = 'Requested page not found. [404]';
+                } else if (jqXHR.status == 500) {
+                    msg = 'Internal Server Error [500].';
+                } else if (exception === 'parsererror') {
+                    msg = 'Requested JSON parse failed.';
+                } else if (exception === 'timeout') {
+                    msg = 'Time out error.';
+                } else if (exception === 'abort') {
+                    msg = 'Ajax request aborted.';
+                } else {
+                    msg = 'Uncaught Error.\n' + jqXHR.responseText;
+                }
+                console.log(msg);
             }
         });
     }
